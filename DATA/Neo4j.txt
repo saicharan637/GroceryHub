@@ -1,0 +1,17 @@
+match (n) detach delete n;
+match (n) return n;
+
+LOAD CSV WITH HEADERS FROM "file:///GroceryHUB.csv" AS line
+WITH line
+MERGE (c:Customer {OrderId: line.OrderId, uname: line.username, email: line.emailid, address:line.customerAddress, zip:line.customerZip, phoneno:line.customerPhoneNo, creditno:line.creditCardNo, pname:line.productName, price:line.pricePerItem, cat:line.category})
+MERGE (p:product {id: line.productId, name: line.productName, price: line.pricePerItem, cat:line.category,weight:line.productWeight, deliverytype:line.deliveryType})
+MERGE (o:Order {id: line.OrderId, order_date: line.purchaseDate, expected_delivery_date: line.expectedDeliveryDate, card_number: line.creditCardNo, total:line.orderTotal})
+MERGE (cat:Category {category: line.category})
+MERGE (d:delivery_type {delivery_type: line.deliveryType})
+MERGE (z:zip_code {Zip_Code: toInteger(line.customerZip)})
+MERGE (c)-[:ORDERED]->(o)
+MERGE (o)-[:HAS_PRODUCT]->(p)
+MERGE (o)-[:HAS_DELIVERY_ZIPCODE]->(z)
+MERGE (o)-[:HAS_DELIVERY_TYPE]->(d)
+MERGE (p)-[:HAS_CATEGORY]->(cat)
+RETURN line
