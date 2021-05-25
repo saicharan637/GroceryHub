@@ -1,7 +1,7 @@
 # GroceryHub
 This Enterprise Web Application Grocery Hub helps users to buy groceries on a daily, weekly, or as-needed basis for Home Delivery or in-store pickup. The users can view the nearest five stores from their location and select the respective store to buy their groceries. The Application uses Google Maps JavaScript API to find out the stores nearest to the user's location and also uses Twitter API to fetch tweets from users and display Top Trending Products on the Home Page. The Application supports trending Realtime features of Latest, Top Sold and Top-Rated Products and utilizes SQL, NoSQL and Graph Database Engines.
 
-# Tools and Technologies Used:
+## Tools and Technologies Used:
 Sublime Text, Notepad++, MySQL Workbench, MongoDB Compass, Neo4j Desktop, Anaconda Navigator, Jupyter Notebook.
 # Front End :
 HTML, CSS, Bootstrap, Font Awesome, JavaScript, Ajax, JSP, jQuery,
